@@ -9,7 +9,7 @@ while True:
     user1=user.capitalize()
     comp=['R','P','S']
     comp1=random.choice(comp)
-    # comp1='P'
+    # comp1='S'
     U1=value[user1]
     C1=value[comp1]
     user2=choice[user1]
@@ -18,7 +18,7 @@ while True:
     print(f'Computer chose {comp2}')
     if C1==U1:
         res='draw'
-    elif C1>U1 and U1!=3:
+    elif C1>U1 and C1!=3:
         res='lose'
     elif C1<U1 and C1!=3:
         res='win'
