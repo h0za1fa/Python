@@ -26,6 +26,15 @@ def score_(res,w,d,l) -> int:
         l=l+1
     return w,d,l
 
+def full_form(sh_form) -> str:
+    if sh_form=='R':
+        full_form='Rock'
+    elif sh_form=='P':
+        full_form='paper'
+    elif sh_form=='S':
+        full_form='Scissor'
+    return full_form
+
 while True:
     com=random_()
     user=input('choose your hand(R/P/S): ')
@@ -33,6 +42,6 @@ while True:
         break
     user=user.capitalize()
     result = res(user, com)
-    print(f"Computer chose: {com} \n\nyou {result}!")
+    print(f"You chose: {full_form(user)} \nComputer chose: {full_form(com)} \n\nyou {result}!")
     wi,dr,lo=score_(result,wi,dr,lo)
     print(f'{wi}/{dr}/{lo}')
