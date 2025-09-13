@@ -1,46 +1,38 @@
 import random
-value={'R':1,'P':2,'S':3}
-choice={'R':'Rock','P':'Paper','S':'Scissor'}
-win=0
-draw=0
-lose=0
-while True:
-    user=input('Rock Paper or Scissors (R/P/S): ')
-    user1=user.capitalize()
-    comp=['R','P','S']
-    comp1=random.choice(comp)
-    # comp1='S'
-    U1=value[user1]
-    C1=value[comp1]
-    user2=choice[user1]
-    comp2=choice[comp1]
-    print(f'You chose {user2}')
-    print(f'Computer chose {comp2}')
-    if C1==U1:
-        res='draw'
-    elif C1>U1 and C1!=3:
-        res='lose'
-    elif C1<U1 and C1!=3:
-        res='win'
-    elif user1=='S':
-        res='lose'
-    elif comp1=='S':
-        res='win'
+def random_() -> str :
+    rps=['R','P','S']
+    com=random.choice(rps)
+    return com
+# print(com)
+# print(user)
+wi=dr=lo=0
+def res(user, comp) -> str:
+    if user not in ('R','P','S'):
+        print('Wrong input!')
+    elif user == comp:
+        result = 'Draw'
+    elif (user, comp) in [('R', 'S'), ('S', 'P'), ('P', 'R')]:
+        result = 'Win'
     else:
-        print('error')
-        res='gg'
-    print(f'You {res}')
-    if res=='win':
-        win+=1
-    elif res=='draw':
-        draw+=1
+        result = 'lose'
+    return result
+
+def score_(res,w,d,l) -> int:
+    if res=='Win':
+        w=w+1
+    elif res=='Draw':
+        d=d+1
     elif res=='lose':
-        lose+=1
-    print(f'{win}/{draw}/{lose}')
-    t=input('Play again(Y/N): ')
-    tr=t.capitalize()
-    if tr=='N':
+        l=l+1
+    return w,d,l
+
+while True:
+    com=random_()
+    user=input('choose your hand(R/P/S): ')
+    if user=='stop':
         break
-print(f'Final result is: {win}/{draw}/{lose}')
-
-
+    user=user.capitalize()
+    result = res(user, com)
+    print(f"Computer chose: {com} \n\nyou {result}!")
+    wi,dr,lo=score_(result,wi,dr,lo)
+    print(f'{wi}/{dr}/{lo}')
