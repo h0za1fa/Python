@@ -1,0 +1,6 @@
+bill=float(input('Enter your total bill: \n'))
+num_of_people=int(input('How many people? \n'))
+tip_perc=int(input('Enter tip percentage 10,12,15: \n'))
+tip=bill*(tip_perc/100)
+per_person=round((bill+tip)/num_of_people, 2)
+print(f'Per person bill will be: {per_person}')
