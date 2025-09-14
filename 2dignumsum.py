@@ -1,0 +1,5 @@
+two_digit_num=input("Enter two digit number: ")
+ones_digit=int(two_digit_num[1])
+tens_digit=int(two_digit_num[0])
+sum=str(ones_digit+tens_digit)
+print('Sum is: ' + sum)
