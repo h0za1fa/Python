@@ -27,7 +27,7 @@ tres_cols=str(random.choice(cols))
 tressure=tres_row+tres_cols
 while True:
     pos=input('Enter postion: ')
-    row=pos[0]
+    row=pos[0].lower()
     colm=int(pos[1])
     if row not in ['a','b','c']:
         print('Worng input!')
