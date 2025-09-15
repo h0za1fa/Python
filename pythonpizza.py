@@ -10,8 +10,6 @@ if peparo == 'Y':
     sizprice+=3
 if cheez == 'Y':
     sizprice+=5
-
-
 print(f'Total is {sizprice}')
 
 
