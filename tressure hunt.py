@@ -52,6 +52,5 @@ while True:
     tries+=1
     if status=='You win!':
         break
-print(status)    
+print(status)
 print(f'You did it in {tries} tries')
-
