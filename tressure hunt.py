@@ -4,7 +4,7 @@ list1=['o','o','o']
 list2=['o','o','o']
 list3=['o','o','o']
 map=[list1,list2,list3]
-print(f'{list1} \n {list2} \n {list3}')
+print(f' {list1} \n {list2} \n {list3}')
 tries=0
 
 def colpos(list, colmn):
@@ -48,7 +48,7 @@ while True:
         cell=colpos(list3,colmn)
         list3[colmn]='x'
         status=jackpot(pos,tressure,list3,colmn)
-    print(f'{list1} \n {list2} \n {list3}')
+    print(f' {list1} \n {list2} \n {list3}')
     tries+=1
     if status=='You win!':
         break
