@@ -6,7 +6,7 @@ coverage=5
 
 def paint_needed(hieght,width,coverage) -> int:
     area=hieght*width
-    paint_req=round(area/coverage , 1)
+    paint_req=area/coverage
     paint_req_int=math.ceil(paint_req)
     return paint_req_int
 
