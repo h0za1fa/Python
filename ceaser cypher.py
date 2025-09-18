@@ -1,13 +1,17 @@
 from ceaserart import logo
 
 def ceaser ( msg , letters , shift , choice ) :
+    msg=msg
     encrypted = ''
     if choice == 'd':
         shift = - shift
     for alph in msg :
-        ind = letters . index (alph)
-        ind = (ind + shift) % len (letters) 
-        encrypted += letters [ind]
+        if alph not in letters:
+            encrypted+=alph
+        else:    
+            ind = letters . index (alph)
+            ind = (ind + shift) % len (letters) 
+            encrypted += letters [ind]
     return encrypted
 
 
@@ -24,6 +28,7 @@ while conti=='Y':
     shift=int(input('Enter shift \n'))
     for words in msg:
         word.append(ceaser(words,letters,shift,choice))
+        
     sent=' '.join(word)
     print(sent)
     word=[]
