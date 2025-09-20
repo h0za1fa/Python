@@ -1,4 +1,4 @@
-from ceaserart import logo
+from art import logoceaser
 
 def ceaser ( msg , letters , shift , choice ) :
     msg=msg
@@ -21,7 +21,7 @@ sent=''
 word=[]
 conti='Y'
 
-logo
+print(logoceaser)
 while conti=='Y':
     choice=input('encode (e) or decode (d) \n')
     msg=input('Enter meseasge \n').split()
