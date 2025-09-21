@@ -18,7 +18,7 @@ def play_game():
         # hit
         if hit_or_stand == 'i':
             result = hit(player_cards)
-            result=blackjack(player_cards)                                                                                                                             #we up
+            result=blackjack(player_cards)
         # stand
         elif hit_or_stand == 'o':
             stand(player_cards,dealer_cards)
