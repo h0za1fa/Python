@@ -144,7 +144,3 @@ while True:
     else:
         order_placed(order,MENU,resources)
     
-    
-            
-    
-        
