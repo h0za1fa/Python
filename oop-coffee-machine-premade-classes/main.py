@@ -15,9 +15,12 @@ while is_on == True:
     if order == 'report':
         coffee_maker.report()
         money_machine.report()
+        
     elif not order_available: 
         order_available
-    elif coffee_maker.is_resource_sufficient(order_available) and money_machine.make_payment(order_available.cost):
-        coffee_maker.make_coffee(order_available)
+    else:
+        print(f'That would be ${order_available.cost} ')
+        if coffee_maker.is_resource_sufficient(order_available) and money_machine.make_payment(order_available.cost):
+           coffee_maker.make_coffee(order_available)
         
         
