@@ -10,7 +10,7 @@ screen.bgcolor('black')
 screen.listen()
 screen.tracer(0)
 
-for _ in range(6):
+for _ in range(10):
     snake.make_segments()
 food = Food()
 food.refresh()
@@ -26,6 +26,6 @@ while game_on == True:
         food.refresh()
         snake.make_segments()
     if snake.self_collision() == True:
-        print('You lost')
+        print(f'You lost\nYour score was {len(snake.segments)}')
         break
 screen.exitonclick()
