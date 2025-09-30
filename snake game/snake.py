@@ -4,12 +4,13 @@ class Snake:
     def __init__(self):
         self.segments = []
         self.n_x = 0
-
+    
     def make_segments(self):
         tim = t.Turtle()
         tim.penup()
         tim.color('white')
-        tim.shape('square')
+        tim.shape('square') 
+        tim.setheading(0)
         tim.width(20)
         tim.goto(self.n_x,0)
         self.n_x -= 20
@@ -31,8 +32,16 @@ class Snake:
         self.segments[0].forward(20)
     
     def self_collision(self):
-        if len(self.segments) > 5:
-            for n in range (5 , len(self.segments) - 1):
-                if self.segments[0].distance(self.segments[n]) < 1 :
-                    return True
-            return False
+        for n in range (1,len(self.segments)):
+            if self.segments[0].distance(self.segments[n]) < 10 :
+                return True
+        return False
+    
+    def reset(self):
+        for seg in self.segments:
+            seg.goto(400,400)
+        self.segments.clear()
+        self.n_x = 0
+        for _ in range(3):
+            self.make_segments()
+        self.segments[0].setheading(0)

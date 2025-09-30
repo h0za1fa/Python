@@ -8,12 +8,12 @@ class Food(Turtle):
         self.color('blue')
         self.shapesize(0.5 , 0.5)
         self.penup()
-        x_axis = random.randint(-30,30) * 10
-        y_axis = random.randint(-30,30) * 10
+        x_axis = random.randint(-27,27) * 10
+        y_axis = random.randint(-27,27) * 10
         self.goto(x_axis,y_axis)
         self.refresh()
     
     def refresh(self):
-        x_axis = random.randint(-30,30) * 10
-        y_axis = random.randint(-30,30) * 10
+        x_axis = random.randint(-28,28) * 10
+        y_axis = random.randint(-28,28) * 10
         self.goto(x_axis,y_axis)
