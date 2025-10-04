@@ -87,6 +87,7 @@ while True:
         print('You saved him!')
     if fail == 6:
         print('He died!')
+        print(f'your word was {word}')
         break
 
     

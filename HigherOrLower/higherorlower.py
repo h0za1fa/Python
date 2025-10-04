@@ -22,7 +22,7 @@ def higher_or_lower(again,higher_dict):
     ans=input('A or B Who is higher??? ').upper()
     return ans,A_dict,B_dict,
 
-#verify awnser
+#verify awnsera
 def verify(ans,A_dict,B_dict):
     higher_dict={}
     if ans=='A' and A_dict['follower_count'] > B_dict['follower_count']:
