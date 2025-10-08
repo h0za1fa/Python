@@ -39,4 +39,4 @@ while game_on == True:
     if snake.segments[0].xcor() > 290 or snake.segments[0].xcor() < -290 or snake.segments[0].ycor() > 290 or snake.segments[0].ycor() < -290 :
         score.update_highscore()
         snake.reset()
-screen.exitonclick()
+screen.mainloop()

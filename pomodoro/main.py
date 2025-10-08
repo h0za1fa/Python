@@ -56,7 +56,7 @@ def count_down(count):
     canvas.itemconfig(timer_text, text=f'{count_min}:{count_sec}')
     if count > 0 :
         global timer
-        timer = window.after(10,count_down, count-1)
+        timer = window.after(1000,count_down, count-1)
     else :
         start_timer()
         
@@ -72,7 +72,7 @@ window.title('Pomodoro')
 window.config(padx=100,pady=50,bg= YELLOW)
 
 canvas = tk.Canvas(width=200,height=224,bg=YELLOW,highlightthickness=0)
-image = tk.PhotoImage(file = '002 pomodoro-start/tomato.png')
+image = tk.PhotoImage(file = 'pomodoro/tomato.png')
 canvas.create_image(100,112,image=image)
 
 timer_text = canvas.create_text(100,130, text='00:00',fill='white', font=(FONT_NAME,24,'bold'))
