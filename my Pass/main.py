@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 import random
 import pyperclip as pyc
+import json
 
 email = 'hozaifaco@gmail.com'
 
@@ -33,13 +34,19 @@ def write_data():
     web = website_entry.get()
     mail = email_entry.get()
     pasw = password_entry.get()
+    data = {
+        web: {
+            'email': mail,
+            'passwrod': pasw
+        } 
+    }
     if web == '' or mail == '' or pasw == '' :
         messagebox.showerror(title='Error', message = 'Please fill all the details!')
     else:
         is_ok = messagebox.askokcancel(title=web, message=f'You entered:\nwebsite: {web}\nemail: {mail}\npassword: {pasw}')
         if is_ok :
-            with open('my pass/data.txt', mode='a') as file :
-                file.write(f'{web} | {mail} | {pasw}\n')
+            with open('my pass/data.json', mode='a') as file :
+                json.dump(data, file, indent= 4)
             website_entry.delete(0, tk.END)
             password_entry.delete(0, tk.END)
             pyc.copy(pasw)
