@@ -28,7 +28,15 @@ phonetic_dict = {row.letter: row.code for (index,row) in df.iterrows()}
 
 #TODO 2. Create a list of the phonetic code words from a word that the user inputs.
 
-message = input().upper()
 # message_list = [letter for letter in message]
-phonetic_message = [phonetic_dict[letter] for letter in message]
-print(phonetic_message)
+def phonetic():
+    try: 
+        message = input().upper()
+        phonetic_message = [phonetic_dict[letter] for letter in message]
+    except KeyError:
+        print('Only write letters in alphabet')
+        phonetic()
+    else:
+        print(phonetic_message)
+
+phonetic()
