@@ -6,6 +6,27 @@ import json
 
 email = 'hozaifaco@gmail.com'
 
+# ---------------------------- SEARCH ------------------------------- #
+
+def search():
+    web = website_entry.get()
+    try:
+        with open('my Pass/data.json') as file :
+            data = json.load(file)
+    except FileNotFoundError:
+        messagebox.showerror(title='Erroe',message='File not found!')
+    else:
+        if web in data :
+            details = data[web]
+            password = details['password']
+            mail = details['email']
+            pyc.copy(password)
+            messagebox.showinfo(title='Details', message=f'Email: {mail}\nPassword: {password}')
+        else:
+            messagebox.showerror(title='Error', message=f'{web} is not saved')
+    finally:
+        website_entry.delete(0, tk.END)
+
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 def generate_password():
@@ -37,7 +58,7 @@ def write_data():
     data = {
         web: {
             'email': mail,
-            'passwrod': pasw
+            'password': pasw
         } 
     }
     if web == '' or mail == '' or pasw == '' :
@@ -45,8 +66,16 @@ def write_data():
     else:
         is_ok = messagebox.askokcancel(title=web, message=f'You entered:\nwebsite: {web}\nemail: {mail}\npassword: {pasw}')
         if is_ok :
-            with open('my pass/data.json', mode='a') as file :
-                json.dump(data, file, indent= 4)
+            try:
+                with open('my pass/data.json', mode='r') as file :
+                    existing_data = json.load(file)
+            except (FileNotFoundError, json.JSONDecodeError):
+                with open('my pass/data.json', mode='w') as file :
+                    json.dump(data, file, indent=4)
+            else:
+                existing_data.update(data)
+                with open('my pass/data.json', mode='w') as file :
+                    json.dump( existing_data, file, indent=4 )
             website_entry.delete(0, tk.END)
             password_entry.delete(0, tk.END)
             pyc.copy(pasw)
@@ -70,9 +99,9 @@ email_label.grid(row=3,column=1)
 password_label = tk.Label(text='Password:')
 password_label.grid(row=4,column=1)
 
-website_entry = tk.Entry(width=43)
+website_entry = tk.Entry(width=33)
 website_entry.focus()
-website_entry.grid(row=2, column=2, columnspan=3)
+website_entry.grid(row=2, column=2)
 
 email_entry = tk.Entry(width=43)
 email_entry.insert(0,email)
@@ -86,5 +115,8 @@ generate_button.grid(row=4,column=3, padx=0)
 
 add_button = tk.Button(text='Add' , width=36, command=write_data)
 add_button.grid(row=5,column=2,columnspan=3)
+
+search_button = tk.Button(text='Search', padx=0, width=7 , command=search)
+search_button.grid(row=2,column=3, padx=0)
 
 window.mainloop()
