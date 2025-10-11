@@ -29,11 +29,12 @@ def select_word(status):
     fr_word, en_word = word_set.values()
     card.itemconfig(word_disp, text = fr_word, fill = BACKGROUND_COLOR)
     timer_delay = window.after(3000, flip_card, en_word)
-    print(word_set)
+    # print(word_set)
     
     words_to_know_dict = {fre: eng for (fre,eng) in word_set.items() if status == True}
     if words_to_know_dict != {}:
         words_to_know.append(words_to_know_dict)
+    data_dict.remove(word_set)
 # <---------------------------------UI setup--------------------------------->
 
 window = tk.Tk()
@@ -65,6 +66,6 @@ wrong_butt.grid(row=2, column=2)
 
 window.mainloop()
 
-print(words_to_know)
+# print(words_to_know)
 df = pd.DataFrame(words_to_know)
 df.to_csv('flash cards/data/words_to_learn.csv')
